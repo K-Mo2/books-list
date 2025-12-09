@@ -1,73 +1,180 @@
-# React + TypeScript + Vite
+# Book List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A reusable React component system for displaying and managing a collection of books. Built as part of a technical assessment demonstrating modern React development practices, testing, and accessibility standards.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Functionality
 
-## React Compiler
+- **Book Display**: Each book card shows a title, optional description, and optional image
+- **Toggle Description**: Interactive toggle to show/hide book descriptions
+- **Add New Books**: Dynamic button to add new books to the list with automatic updates
+- **Error Handling**: Graceful handling of invalid image URLs with placeholder messaging
+- **Responsive Design**: Clean, accessible UI that works across different screen sizes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Technical Highlights
 
-## Expanding the ESLint configuration
+- ✅ Reusable component architecture
+- ✅ TypeScript for type safety
+- ✅ React state management with hooks
+- ✅ Comprehensive test coverage with React Testing Library
+- ✅ WCAG accessibility compliance
+- ✅ Modern CSS modules for styling
+- ✅ Production-ready code structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Before you begin, ensure you have the following installed:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Node.js** (v16 or higher)
+- **Yarn** (v1.22 or higher)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To check if you have these installed:
+
+```bash
+node --version
+yarn --version
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+If you need to install Yarn:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install -g yarn
 ```
+
+## Installation
+
+1. **Clone or download the project**
+
+   ```bash
+   cd books-list
+   ```
+
+2. **Install dependencies**
+   ```bash
+   yarn install
+   ```
+
+## Running the Application
+
+### Development Mode
+
+Start the development server with hot reloading:
+
+```bash
+yarn start
+```
+
+The application will open automatically in your browser at [http://localhost:5173/](http://localhost:5173/)
+
+### Production Build
+
+Create an optimized production build:
+
+```bash
+yarn build
+```
+
+The build artifacts will be stored in the `build/` directory.
+
+## Testing
+
+### Run All Tests
+
+Execute the complete test suite:
+
+```bash
+yarn test
+```
+
+### Run Tests with Verbose Output
+
+See detailed test results:
+
+```bash
+yarn test --verbose
+```
+
+## Component Usage
+
+### BookCard Component
+
+The `BookCard` component is a reusable card that displays individual book information.
+
+**Props:**
+
+- `title` (string, required): The book's title
+- `description` (string): The book's description
+- `imageUrl` (string, optional): URL to the book's cover image
+
+## Key Features Explained
+
+### 1. Toggle Description
+
+Each book card includes a "Show/Hide Details" button that toggles the visibility of the book's description, demonstrating React state management.
+
+### 2. Add New Book
+
+The "Add New Book" button generates a new book with randomized sample data and adds it to the list, showcasing dynamic list updates.
+
+### 3. Image Error Handling
+
+If an image URL is invalid or fails to load, the component displays a user-friendly "Invalid Image URL" message instead of a broken image.
+
+### 4. Accessibility (WCAG Compliance)
+
+- Semantic HTML elements
+- ARIA labels for interactive elements
+- Keyboard navigation support
+- Sufficient color contrast ratios
+- Alt text for images
+
+## Testing Strategy
+
+The application includes comprehensive tests covering:
+
+- **Component Rendering**: Ensures components render correctly with various prop combinations
+- **State Management**: Verifies toggle functionality and state updates
+- **User Interactions**: Tests button clicks and dynamic list updates
+- **Error Handling**: Validates graceful handling of invalid image URLs
+- **Edge Cases**: Tests missing props and empty states
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Development Practices
+
+This project follows modern React development standards:
+
+- **TypeScript**: Strong typing for better code quality and developer experience
+- **Component Composition**: Modular, reusable components
+- **CSS Modules**: Scoped styling to prevent conflicts
+- **Testing**: Test-driven approach with high coverage
+- **Accessibility**: WCAG 2.1 AA compliance
+- **Clean Code**: ESLint and Prettier for consistent formatting
+
+## Troubleshooting
+
+### Dependencies Issues
+
+Clear cache and reinstall:
+
+```bash
+yarn cache clean
+rm -rf node_modules yarn.lock
+yarn install
+```
+
+## Scripts Reference
+
+| Command      | Description               |
+| ------------ | ------------------------- |
+| `yarn start` | Starts development server |
+| `yarn build` | Creates production build  |
+| `yarn test`  | Runs test suite           |
+
+**Built with React, TypeScript, and ❤️**
